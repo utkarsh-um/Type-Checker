@@ -1,0 +1,20 @@
+hastype([],num(1),T).
+hastype([(x,tint)],plus(num(1),var(x)),tint).
+hastype([(x,tint),(y,tbool)],mult(var(y),var(x)),T).
+hastype([(x,tint),(y,tint)],comp(var(y),var(x)),T).
+hastype([(x,T1),(y,T2)],equal(var(y),var(x)),T).
+hastype([(x,tint),(y,tbool)],if_then_else(true,var(x),var(y)),tbool).
+hastype(G,if_then_else(true,var(x),var(y)),T).
+hastype([],funabs(var(x),tint,plus(var(x),num(1))),T).
+hastype([(y,tbool)],funapp(funabs(var(x),tint,equal(var(x),num(1))),var(y)),T).
+hastype([(y,tint)],funapp(funabs(var(x),tint,equal(var(x),num(1))),var(y)),T).
+hastype([(f,tint),(x,Tx),(y,Ty),(z,Tz),(a,Ta),(b,Tb),(c,Tc)],match_with(var(f),[var(x),var(y),var(z)],[var(a),var(b),var(c)]),tbool).
+hastype([(x,tbool)],let_in_end(def(var(x),num(2)),var(x)),T).
+hastype([(x,tbool)],let_in_end(seq(def(var(y),num(2)),def(var(x),var(y))),var(x)),T).
+hastype([(x,tint),(y,tbool)],let_in_end(par(def(var(y),num(2)),def(var(x),var(y))),var(x)),T).
+hastype([(x,tbool)],let_in_end(local_in_end(def(var(x),num(2)),def(var(y),var(x))),var(x)),T).
+hastype(G, funabs(var(f), T1, funabs(var(g), T2, funapp(var(g), var(f)))), T).
+hastype([(x,int)],and( let_in_end(def(var(x),comp(num(1),num(2))),var(x)) ,var(x)),T).
+hastype([(x,int)],let_in_end(def(var(x),comp(num(1),num(2))),var(x)),T).
+hastype([],proj(tuple([num(1),true,false,num(2)]),1),T).
+hastype([],funabs(var(x),Tx,funabs(var(y),Ty,equal(var(x),var(y)))),T)
