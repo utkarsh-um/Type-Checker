@@ -1,5 +1,5 @@
 # Type-Checker
-Type Checker in Prolog
+Type Checker in Prolog for a Simple Functional Programming Language
 # Problem Statement:
 In this assignment, you will write a type-checker for a simple functional language.
 
